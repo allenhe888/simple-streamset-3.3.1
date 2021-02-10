@@ -20,7 +20,6 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.streamsets.datacollector.cluster.ClusterModeConstants;
 import com.streamsets.datacollector.security.HadoopSecurityUtil;
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.BaseSource;
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
 import com.streamsets.pipeline.api.impl.ClusterSource;
@@ -79,7 +78,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.security.PrivilegedExceptionAction;
-import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 

@@ -39,7 +39,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.*;
 
 public class KafkaValidationUtil09IT {
 

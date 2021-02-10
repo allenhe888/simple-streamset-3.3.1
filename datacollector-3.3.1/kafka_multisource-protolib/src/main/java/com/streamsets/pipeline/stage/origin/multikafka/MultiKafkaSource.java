@@ -16,7 +16,6 @@
 package com.streamsets.pipeline.stage.origin.multikafka;
 
 import com.google.common.base.Throwables;
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.BasePushSource;
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
 import com.streamsets.pipeline.api.impl.Utils;
@@ -41,7 +40,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MultiKafkaSource extends BasePushSource {

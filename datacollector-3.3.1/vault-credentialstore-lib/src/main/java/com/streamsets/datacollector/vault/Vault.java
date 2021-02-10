@@ -28,8 +28,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.util.*;
-import java.util.concurrent.*;
 
 public class Vault {
   private static final Logger LOG = LoggerFactory.getLogger(Vault.class);

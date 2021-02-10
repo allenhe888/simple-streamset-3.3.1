@@ -23,7 +23,6 @@ import com.streamsets.pipeline.api.impl.Utils;
 import com.streamsets.pipeline.kafka.api.MessageAndOffset;
 import com.streamsets.pipeline.kafka.api.SdcKafkaConsumer;
 import org.apache.commons.lang.StringUtils;
-import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.errors.AuthorizationException;
@@ -31,7 +30,6 @@ import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;

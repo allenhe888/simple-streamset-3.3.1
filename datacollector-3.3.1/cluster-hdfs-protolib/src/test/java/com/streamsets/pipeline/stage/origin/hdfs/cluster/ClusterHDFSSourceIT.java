@@ -16,13 +16,11 @@
 package com.streamsets.pipeline.stage.origin.hdfs.cluster;
 
 import com.google.common.collect.ImmutableList;
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.Stage.ConfigIssue;
 import com.streamsets.pipeline.api.lineage.EndPointType;
 import com.streamsets.pipeline.api.lineage.LineageEvent;
 import com.streamsets.pipeline.api.lineage.LineageEventType;
 import com.streamsets.pipeline.api.lineage.LineageSpecificAttribute;
-import com.streamsets.pipeline.config.*;
 import com.streamsets.pipeline.impl.Pair;
 import com.streamsets.pipeline.sdk.ContextInfoCreator;
 import com.streamsets.pipeline.sdk.SourceRunner;
@@ -35,7 +33,6 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumWriter;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.HdfsConfiguration;
 import org.apache.hadoop.hdfs.MiniDFSCluster;
 import org.apache.hadoop.hdfs.server.namenode.EditLogFileOutputStream;
@@ -54,7 +51,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;

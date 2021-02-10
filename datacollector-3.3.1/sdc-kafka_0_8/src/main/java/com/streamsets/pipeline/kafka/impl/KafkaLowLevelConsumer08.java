@@ -26,14 +26,12 @@ import kafka.api.FetchRequestBuilder;
 import kafka.api.PartitionOffsetRequestInfo;
 import kafka.common.ErrorMapping;
 import kafka.common.TopicAndPartition;
-import kafka.javaapi.*;
 import kafka.javaapi.consumer.SimpleConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
-import java.util.*;
 
 public class KafkaLowLevelConsumer08 implements SdcKafkaLowLevelConsumer {
 

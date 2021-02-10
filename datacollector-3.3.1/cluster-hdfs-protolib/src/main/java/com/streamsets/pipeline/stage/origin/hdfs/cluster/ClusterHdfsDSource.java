@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.hdfs.cluster;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DClusterSourceOffsetCommitter;
 import com.streamsets.pipeline.api.impl.ClusterSource;
 

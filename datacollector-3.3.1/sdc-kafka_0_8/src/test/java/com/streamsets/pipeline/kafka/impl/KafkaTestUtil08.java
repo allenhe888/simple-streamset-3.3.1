@@ -29,8 +29,6 @@ import org.I0Itec.zkclient.ZkClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-
 public class KafkaTestUtil08 extends SdcKafkaTestUtil {
 
   private static final Logger LOG = LoggerFactory.getLogger(KafkaTestUtil08.class);

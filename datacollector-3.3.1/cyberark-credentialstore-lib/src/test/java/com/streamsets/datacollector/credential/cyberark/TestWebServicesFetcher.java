@@ -31,27 +31,24 @@ import org.eclipse.jetty.security.HashLoginService;
 import org.eclipse.jetty.security.LoginService;
 import org.eclipse.jetty.security.authentication.BasicAuthenticator;
 import org.eclipse.jetty.security.authentication.DigestAuthenticator;
-import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.security.Constraint;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
-import org.junit.*;
 
 import javax.security.auth.x500.X500Principal;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
-import java.security.*;
+import java.security.GeneralSecurityException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
-import java.util.*;
 import java.util.concurrent.Callable;
 
 public class TestWebServicesFetcher {

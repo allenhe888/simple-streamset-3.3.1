@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.destination.kafka;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DTarget;
 import com.streamsets.pipeline.kafka.api.KafkaDestinationGroups;
 

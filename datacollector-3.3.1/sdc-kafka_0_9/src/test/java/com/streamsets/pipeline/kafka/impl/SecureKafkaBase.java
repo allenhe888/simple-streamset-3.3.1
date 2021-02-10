@@ -41,7 +41,6 @@ import org.junit.experimental.categories.Category;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
-import java.util.*;
 
 @Category(SingleForkNoReuseTest.class)
 public abstract class SecureKafkaBase {

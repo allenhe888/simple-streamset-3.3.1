@@ -37,7 +37,6 @@ import scala.Option;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class KafkaTestUtil11 extends SdcKafkaTestUtil {

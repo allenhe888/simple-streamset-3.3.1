@@ -15,7 +15,6 @@
  */
 package com.streamsets.datacollector.vault.api.sys;
 
-import com.google.api.client.http.*;
 import com.google.api.client.http.json.JsonHttpContent;
 import com.streamsets.datacollector.vault.VaultConfiguration;
 import com.streamsets.datacollector.vault.api.VaultEndpoint;

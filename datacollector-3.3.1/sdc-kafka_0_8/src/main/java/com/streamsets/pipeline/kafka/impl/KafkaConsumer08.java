@@ -22,7 +22,6 @@ import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;
 import com.streamsets.pipeline.kafka.api.MessageAndOffset;
 import com.streamsets.pipeline.kafka.api.SdcKafkaConsumer;
 import com.streamsets.pipeline.lib.kafka.KafkaErrors;
-import kafka.consumer.*;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.message.MessageAndMetadata;
 import org.slf4j.Logger;

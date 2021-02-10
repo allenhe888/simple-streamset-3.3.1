@@ -16,7 +16,6 @@
 package com.streamsets.pipeline.stage.destination.kafka;
 
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.config.DataFormat;
 
 @StageDef(

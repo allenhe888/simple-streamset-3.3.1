@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.multikafka;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DPushSource;
 
 @StageDef(

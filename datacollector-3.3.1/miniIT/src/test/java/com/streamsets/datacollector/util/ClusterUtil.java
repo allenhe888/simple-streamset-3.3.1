@@ -24,7 +24,6 @@ import org.apache.hadoop.yarn.server.MiniYARNCluster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
 import java.net.URI;
 import java.util.Map;
 import java.util.Properties;

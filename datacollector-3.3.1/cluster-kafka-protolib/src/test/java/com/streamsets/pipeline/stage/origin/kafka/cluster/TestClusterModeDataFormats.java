@@ -19,7 +19,6 @@ import com.streamsets.pipeline.api.ExecutionMode;
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.ext.json.Mode;
-import com.streamsets.pipeline.config.*;
 import com.streamsets.pipeline.impl.Pair;
 import com.streamsets.pipeline.kafka.common.DataType;
 import com.streamsets.pipeline.kafka.common.KafkaTestUtil;
@@ -39,7 +38,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 
 public class TestClusterModeDataFormats {

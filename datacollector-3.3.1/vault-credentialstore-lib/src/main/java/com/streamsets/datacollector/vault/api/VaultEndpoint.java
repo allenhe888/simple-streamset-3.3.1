@@ -15,7 +15,6 @@
  */
 package com.streamsets.datacollector.vault.api;
 
-import com.google.api.client.http.*;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;

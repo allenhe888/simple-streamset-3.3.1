@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.ipctokafka;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DSourceOffsetCommitter;
 import com.streamsets.pipeline.stage.destination.kafka.KafkaTargetConfig;
 

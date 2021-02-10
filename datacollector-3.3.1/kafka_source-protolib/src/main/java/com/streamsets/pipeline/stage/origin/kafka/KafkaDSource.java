@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.kafka;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DClusterSourceOffsetCommitter;
 import com.streamsets.pipeline.api.impl.ClusterSource;
 import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;

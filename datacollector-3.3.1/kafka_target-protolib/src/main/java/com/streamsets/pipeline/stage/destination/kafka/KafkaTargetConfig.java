@@ -17,7 +17,7 @@ package com.streamsets.pipeline.stage.destination.kafka;
 
 import com.google.common.base.Joiner;
 import com.google.common.net.HostAndPort;
-import com.streamsets.pipeline.api.*;
+import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.el.ELEval;
 import com.streamsets.pipeline.api.el.ELEvalException;
 import com.streamsets.pipeline.api.el.ELVars;
@@ -30,8 +30,6 @@ import com.streamsets.pipeline.lib.kafka.KafkaErrors;
 import com.streamsets.pipeline.stage.destination.lib.DataGeneratorFormatConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
 
 import static com.streamsets.pipeline.config.AvroSchemaLookupMode.ID;
 import static com.streamsets.pipeline.config.AvroSchemaLookupMode.SUBJECT;
