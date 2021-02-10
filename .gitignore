@@ -1,0 +1,14 @@
+*.iml
+.idea/
+.idea/*
+*/target/
+target
+mvn
+output
+*/output/
+input
+*/input/
+spark-warehouse
+checkpoint
+data
+*dependency-reduced-pom.xml
