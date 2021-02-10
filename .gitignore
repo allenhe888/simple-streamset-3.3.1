@@ -4,10 +4,6 @@
 */target/
 target
 mvn
-output
-*/output/
-input
-*/input/
 spark-warehouse
 checkpoint
 *dependency-reduced-pom.xml
