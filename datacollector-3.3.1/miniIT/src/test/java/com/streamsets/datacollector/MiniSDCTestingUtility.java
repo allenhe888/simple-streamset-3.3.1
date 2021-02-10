@@ -18,7 +18,6 @@ package com.streamsets.datacollector;
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.MiniSDC.ExecutionMode;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
@@ -26,22 +25,12 @@ import org.apache.hadoop.yarn.server.MiniYARNCluster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class MiniSDCTestingUtility {
 

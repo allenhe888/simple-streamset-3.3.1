@@ -15,11 +15,7 @@
  */
 package com.streamsets.pipeline.kafka.impl;
 
-import com.streamsets.pipeline.kafka.api.FactoriesBean;
-import com.streamsets.pipeline.kafka.api.SdcKafkaConsumerFactory;
-import com.streamsets.pipeline.kafka.api.SdcKafkaLowLevelConsumerFactory;
-import com.streamsets.pipeline.kafka.api.SdcKafkaProducerFactory;
-import com.streamsets.pipeline.kafka.api.SdcKafkaValidationUtilFactory;
+import com.streamsets.pipeline.kafka.api.*;
 
 public class Kafka1_0FactoriesBean extends FactoriesBean {
 

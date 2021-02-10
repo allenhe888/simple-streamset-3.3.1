@@ -19,11 +19,7 @@ import com.streamsets.pipeline.api.ExecutionMode;
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.ext.json.Mode;
-import com.streamsets.pipeline.config.CsvHeader;
-import com.streamsets.pipeline.config.CsvMode;
-import com.streamsets.pipeline.config.CsvRecordType;
-import com.streamsets.pipeline.config.DataFormat;
-import com.streamsets.pipeline.config.JsonMode;
+import com.streamsets.pipeline.config.*;
 import com.streamsets.pipeline.impl.Pair;
 import com.streamsets.pipeline.kafka.common.DataType;
 import com.streamsets.pipeline.kafka.common.KafkaTestUtil;
@@ -32,11 +28,7 @@ import com.streamsets.pipeline.kafka.common.SdcKafkaTestUtilFactory;
 import com.streamsets.pipeline.sdk.SourceRunner;
 import com.streamsets.pipeline.sdk.StageRunner;
 import com.streamsets.pipeline.stage.common.HeaderAttributeConstants;
-import com.streamsets.pipeline.stage.origin.kafka.BaseKafkaSource;
-import com.streamsets.pipeline.stage.origin.kafka.ClusterKafkaSourceFactory;
-import com.streamsets.pipeline.stage.origin.kafka.KafkaConfigBean;
-import com.streamsets.pipeline.stage.origin.kafka.KafkaDSource;
-import com.streamsets.pipeline.stage.origin.kafka.KafkaSourceFactory;
+import com.streamsets.pipeline.stage.origin.kafka.*;
 import kafka.utils.TestUtils;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -47,12 +39,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 
 public class TestClusterModeDataFormats {

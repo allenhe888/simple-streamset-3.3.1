@@ -17,7 +17,6 @@ package com.streamsets.datacollector.dev.standalone;
 
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.base.PipelineOperationsStandaloneIT;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 

@@ -16,11 +16,7 @@
 package com.streamsets.pipeline.stage.destination.kafka;
 
 
-import com.streamsets.pipeline.api.ErrorStage;
-import com.streamsets.pipeline.api.GenerateResourceBundle;
-import com.streamsets.pipeline.api.HideConfigs;
-import com.streamsets.pipeline.api.StageDef;
-import com.streamsets.pipeline.api.Target;
+import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.config.DataFormat;
 
 @StageDef(

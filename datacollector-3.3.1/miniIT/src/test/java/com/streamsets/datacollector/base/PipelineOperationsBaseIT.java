@@ -16,7 +16,6 @@
 package com.streamsets.datacollector.base;
 
 import com.streamsets.datacollector.util.VerifyUtils;
-
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;

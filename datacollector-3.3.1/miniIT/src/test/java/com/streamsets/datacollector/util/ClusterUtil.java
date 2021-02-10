@@ -17,7 +17,6 @@ package com.streamsets.datacollector.util;
 
 import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.MiniSDCTestingUtility;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
@@ -25,11 +24,7 @@ import org.apache.hadoop.yarn.server.MiniYARNCluster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URI;
 import java.util.Map;
 import java.util.Properties;

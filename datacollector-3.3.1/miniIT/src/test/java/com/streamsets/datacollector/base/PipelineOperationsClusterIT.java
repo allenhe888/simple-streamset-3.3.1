@@ -17,7 +17,6 @@ package com.streamsets.datacollector.base;
 
 import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.util.ClusterUtil;
-
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
 
 import java.net.URI;

@@ -17,12 +17,7 @@ package com.streamsets.datacollector.flume.standalone;
 
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.base.PipelineRunStandaloneIT;
-
-import org.apache.flume.Channel;
-import org.apache.flume.ChannelSelector;
-import org.apache.flume.Context;
-import org.apache.flume.Event;
-import org.apache.flume.Transaction;
+import org.apache.flume.*;
 import org.apache.flume.channel.ChannelProcessor;
 import org.apache.flume.channel.MemoryChannel;
 import org.apache.flume.channel.ReplicatingChannelSelector;

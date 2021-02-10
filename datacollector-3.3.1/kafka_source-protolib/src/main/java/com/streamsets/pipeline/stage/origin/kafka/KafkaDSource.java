@@ -15,15 +15,7 @@
  */
 package com.streamsets.pipeline.stage.origin.kafka;
 
-import com.streamsets.pipeline.api.ConfigDefBean;
-import com.streamsets.pipeline.api.ExecutionMode;
-import com.streamsets.pipeline.api.ConfigGroups;
-import com.streamsets.pipeline.api.ErrorListener;
-import com.streamsets.pipeline.api.GenerateResourceBundle;
-import com.streamsets.pipeline.api.HideConfigs;
-import com.streamsets.pipeline.api.RawSource;
-import com.streamsets.pipeline.api.Source;
-import com.streamsets.pipeline.api.StageDef;
+import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DClusterSourceOffsetCommitter;
 import com.streamsets.pipeline.api.impl.ClusterSource;
 import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;

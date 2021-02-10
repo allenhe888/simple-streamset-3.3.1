@@ -22,8 +22,8 @@ import com.streamsets.pipeline.kafka.api.ProducerFactorySettings;
 import com.streamsets.pipeline.kafka.api.SdcKafkaProducer;
 import com.streamsets.pipeline.kafka.api.SdcKafkaProducerFactory;
 import com.streamsets.pipeline.kafka.common.SdcKafkaTestUtil;
-import com.streamsets.pipeline.lib.kafka.KafkaConstants;
 import com.streamsets.pipeline.kafka.common.SdcKafkaTestUtilFactory;
+import com.streamsets.pipeline.lib.kafka.KafkaConstants;
 import com.streamsets.pipeline.lib.kafka.KafkaErrors;
 import com.streamsets.testing.NetworkUtils;
 import kafka.admin.AdminUtils;
@@ -45,14 +45,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

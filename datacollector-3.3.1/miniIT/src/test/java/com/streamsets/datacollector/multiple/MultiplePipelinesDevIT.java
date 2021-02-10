@@ -17,7 +17,6 @@ package com.streamsets.datacollector.multiple;
 
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.base.MultiplePipelinesBaseIT;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 

@@ -19,7 +19,6 @@ import com.google.common.io.Resources;
 import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.MiniSDC.ExecutionMode;
 import com.streamsets.datacollector.util.VerifyUtils;
-
 import org.junit.Test;
 
 import java.net.URI;

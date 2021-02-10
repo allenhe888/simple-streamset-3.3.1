@@ -18,13 +18,11 @@ package com.streamsets.datacollector.base;
 import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.MiniSDCTestingUtility;
 import com.streamsets.datacollector.util.VerifyUtils;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.Response;
-
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;

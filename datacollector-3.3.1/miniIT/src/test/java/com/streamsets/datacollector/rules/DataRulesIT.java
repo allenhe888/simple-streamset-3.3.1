@@ -20,14 +20,7 @@ import com.streamsets.datacollector.MiniSDC;
 import com.streamsets.datacollector.MiniSDCTestingUtility;
 import com.streamsets.datacollector.util.VerifyUtils;
 import com.streamsets.pipeline.kafka.common.KafkaTestUtil;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

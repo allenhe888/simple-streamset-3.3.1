@@ -10,5 +10,4 @@ input
 */input/
 spark-warehouse
 checkpoint
-data
 *dependency-reduced-pom.xml

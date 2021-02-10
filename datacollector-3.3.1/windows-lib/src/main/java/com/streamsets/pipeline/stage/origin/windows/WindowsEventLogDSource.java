@@ -15,13 +15,7 @@
  */
 package com.streamsets.pipeline.stage.origin.windows;
 
-import com.streamsets.pipeline.api.ConfigDef;
-import com.streamsets.pipeline.api.ConfigGroups;
-import com.streamsets.pipeline.api.ExecutionMode;
-import com.streamsets.pipeline.api.GenerateResourceBundle;
-import com.streamsets.pipeline.api.Source;
-import com.streamsets.pipeline.api.StageDef;
-import com.streamsets.pipeline.api.ValueChooserModel;
+import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DSource;
 
 @GenerateResourceBundle

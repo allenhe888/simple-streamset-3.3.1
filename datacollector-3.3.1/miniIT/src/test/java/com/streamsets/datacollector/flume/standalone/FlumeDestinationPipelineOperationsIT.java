@@ -17,7 +17,6 @@ package com.streamsets.datacollector.flume.standalone;
 
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.base.PipelineOperationsStandaloneIT;
-
 import org.apache.flume.Channel;
 import org.apache.flume.ChannelSelector;
 import org.apache.flume.Context;

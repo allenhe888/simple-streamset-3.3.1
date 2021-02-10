@@ -24,13 +24,7 @@ import com.streamsets.datacollector.vault.api.Logical;
 import com.streamsets.datacollector.vault.api.VaultException;
 import com.streamsets.datacollector.vault.api.sys.Sys;
 
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

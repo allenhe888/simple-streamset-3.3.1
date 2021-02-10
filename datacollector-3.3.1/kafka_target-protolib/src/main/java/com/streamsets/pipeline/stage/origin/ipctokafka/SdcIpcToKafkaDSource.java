@@ -15,14 +15,7 @@
  */
 package com.streamsets.pipeline.stage.origin.ipctokafka;
 
-import com.streamsets.pipeline.api.ConfigDef;
-import com.streamsets.pipeline.api.ConfigDefBean;
-import com.streamsets.pipeline.api.ConfigGroups;
-import com.streamsets.pipeline.api.ExecutionMode;
-import com.streamsets.pipeline.api.GenerateResourceBundle;
-import com.streamsets.pipeline.api.HideConfigs;
-import com.streamsets.pipeline.api.Source;
-import com.streamsets.pipeline.api.StageDef;
+import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.configurablestage.DSourceOffsetCommitter;
 import com.streamsets.pipeline.stage.destination.kafka.KafkaTargetConfig;
 

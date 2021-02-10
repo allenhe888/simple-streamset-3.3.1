@@ -17,7 +17,6 @@ package com.streamsets.datacollector.hdfs.standalone;
 
 import com.google.common.io.Resources;
 import com.streamsets.datacollector.base.PipelineRunStandaloneIT;
-
 import com.streamsets.datacollector.util.TestUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;

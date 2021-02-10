@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.streamsets.datacollector.record.RecordImpl;
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.BaseSource;
 import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;
 import com.streamsets.pipeline.lib.kafka.KafkaConstants;
@@ -22,7 +21,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;

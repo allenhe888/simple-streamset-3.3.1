@@ -17,11 +17,7 @@ package com.streamsets.pipeline.stage.origin.kafka.cluster;
 
 import com.google.common.collect.ImmutableMap;
 import com.streamsets.datacollector.cluster.ClusterModeConstants;
-import com.streamsets.pipeline.api.BatchMaker;
-import com.streamsets.pipeline.api.ErrorListener;
-import com.streamsets.pipeline.api.OffsetCommitter;
-import com.streamsets.pipeline.api.Record;
-import com.streamsets.pipeline.api.StageException;
+import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.impl.ClusterSource;
 import com.streamsets.pipeline.cluster.Consumer;
 import com.streamsets.pipeline.cluster.ControlChannel;

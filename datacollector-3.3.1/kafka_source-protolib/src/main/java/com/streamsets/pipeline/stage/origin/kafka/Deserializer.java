@@ -17,9 +17,7 @@ package com.streamsets.pipeline.stage.origin.kafka;
 
 import com.streamsets.pipeline.api.Label;
 
-import static com.streamsets.pipeline.stage.origin.kafka.Deserializer.SerializerConstants.BYTE_ARRAY_DESERIALIZER;
-import static com.streamsets.pipeline.stage.origin.kafka.Deserializer.SerializerConstants.KAFKA_AVRO_DESERIALIZER;
-import static com.streamsets.pipeline.stage.origin.kafka.Deserializer.SerializerConstants.STRING_DESERIALIZER;
+import static com.streamsets.pipeline.stage.origin.kafka.Deserializer.SerializerConstants.*;
 
 public enum Deserializer implements Label {
   STRING("String", STRING_DESERIALIZER, STRING_DESERIALIZER),

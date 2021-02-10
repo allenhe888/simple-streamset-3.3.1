@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.kafka.randomdatagenerator;
 
-import com.streamsets.pipeline.api.*;
 import com.streamsets.pipeline.api.base.BasePushSource;
 import com.streamsets.pipeline.api.base.Errors;
 import com.streamsets.pipeline.api.impl.Utils;
@@ -33,7 +32,6 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
