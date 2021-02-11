@@ -15,7 +15,6 @@
  */
 package com.streamsets.pipeline.stage.origin.kafka;
 
-import com.streamsets.datacollector.StaticCounter;
 import com.streamsets.pipeline.api.BatchMaker;
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
@@ -64,19 +63,14 @@ public class StandaloneKafkaSource extends BaseKafkaSource {
     return conf.topic + "::" + message.getPartition() + "::" + message.getOffset();
   }
 
-  private long consumerReadStart=0L;
-  private long descRecordStart=0L;
   @Override
   public String produce(String lastSourceOffset, int maxBatchSize, BatchMaker batchMaker) throws StageException {
     int recordCounter = 0;
     int batchSize = conf.maxBatchSize > maxBatchSize ? maxBatchSize : conf.maxBatchSize;
     long startTime = System.currentTimeMillis();
     while (recordCounter < batchSize && (startTime + conf.maxWaitTime) > System.currentTimeMillis()) {
-      consumerReadStart = System.nanoTime();
       MessageAndOffset message = kafkaConsumer.read();
-      StaticCounter.getInstance().addThreadTimeAndBatchCount(StaticCounter.Key.STAGE_KAFKA_CONSUMER_READ,System.nanoTime() -consumerReadStart);
       if (message != null) {
-        descRecordStart = System.nanoTime();
         String messageId = getMessageID(message);
         List<Record> records;
         records = processKafkaMessageDefault(String.valueOf(message.getPartition()),
@@ -88,7 +82,6 @@ public class StandaloneKafkaSource extends BaseKafkaSource {
         if (getContext().isPreview() && recordCounter + records.size() > batchSize) {
           records = records.subList(0, batchSize - recordCounter);
         }
-        StaticCounter.getInstance().addThreadTimeAndBatchCount(StaticCounter.Key.STAGE_KAFKA_DESC_RECORD,System.nanoTime() -descRecordStart);
         for (Record record : records) {
           batchMaker.addRecord(record);
         }

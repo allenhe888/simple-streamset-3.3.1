@@ -138,15 +138,17 @@
     <module>lookup-protolib</module>
     <module>hdfs-protolib</module>
     <module>dir-spooler-protolib</module>
-    <!--<module>sdc-kafka-api</module>-->
-    <!--<module>sdc-kafka_0_9-common</module>-->
-    <!--<module>sdc-kafka_0_9</module>-->
-    <!--<module>kafka-common</module>-->
-    <!--<module>kafka_source-protolib</module>-->
-    <!--<module>kafka_multisource-protolib</module>-->
-    <!--<module>kafka_multisource-0_9-protolib</module>-->
-    <!--<module>kafka_multisource-0_10-protolib</module>-->
-    <!--<module>kafka_target-protolib</module>-->
+
+    <module>sdc-kafka-api</module>
+    <module>sdc-kafka_0_8</module>
+    <module>sdc-kafka_0_9-common</module>
+    <module>sdc-kafka_0_9</module>
+    <module>kafka-common</module>
+    <module>kafka_source-protolib</module>
+    <module>kafka_multisource-protolib</module>
+    <module>kafka_multisource-0_9-protolib</module>
+    <module>kafka_multisource-0_10-protolib</module>
+    <module>kafka_target-protolib</module>
 
     <module>kudu-protolib</module>
     <module>cluster-common</module>

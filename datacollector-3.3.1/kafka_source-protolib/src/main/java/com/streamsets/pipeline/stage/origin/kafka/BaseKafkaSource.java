@@ -24,7 +24,12 @@ import com.streamsets.pipeline.api.base.BaseSource;
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
 import com.streamsets.pipeline.api.impl.Utils;
 import com.streamsets.pipeline.config.DataFormat;
-import com.streamsets.pipeline.kafka.api.*;
+import com.streamsets.pipeline.kafka.api.ConsumerFactorySettings;
+import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;
+import com.streamsets.pipeline.kafka.api.SdcKafkaConsumer;
+import com.streamsets.pipeline.kafka.api.SdcKafkaConsumerFactory;
+import com.streamsets.pipeline.kafka.api.SdcKafkaValidationUtil;
+import com.streamsets.pipeline.kafka.api.SdcKafkaValidationUtilFactory;
 import com.streamsets.pipeline.lib.kafka.KafkaConstants;
 import com.streamsets.pipeline.lib.kafka.KafkaErrors;
 import com.streamsets.pipeline.lib.parser.DataParser;
@@ -33,6 +38,8 @@ import com.streamsets.pipeline.lib.parser.DataParserFactory;
 import com.streamsets.pipeline.stage.common.DefaultErrorRecordHandler;
 import com.streamsets.pipeline.stage.common.ErrorRecordHandler;
 import com.streamsets.pipeline.stage.common.HeaderAttributeConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +51,7 @@ import static com.streamsets.pipeline.Utils.KAFKA_CONFIG_BEAN_PREFIX;
 import static com.streamsets.pipeline.Utils.KAFKA_DATA_FORMAT_CONFIG_BEAN_PREFIX;
 
 public abstract class BaseKafkaSource extends BaseSource implements OffsetCommitter {
-
+  private static final Logger LOG = LoggerFactory.getLogger(BaseKafkaSource.class);
   protected final KafkaConfigBean conf;
   protected SdcKafkaConsumer kafkaConsumer;
 
@@ -52,6 +59,11 @@ public abstract class BaseKafkaSource extends BaseSource implements OffsetCommit
   private DataParserFactory parserFactory;
   private int originParallelism = 0;
   private SdcKafkaValidationUtil kafkaValidationUtil;
+
+  private static String kafkaConsumerByUser = "com_streamsets_pipeline_stage_origin_kafka_cluster_KafkaDSourceUser";
+  private static String confOuId = "env.ou.id";
+  private static String confKafkaBrokerAddress = "env.kafka.broker.address";
+  private static String confKafkaZKAddress = "env.kafka.zk.address";
 
   public BaseKafkaSource(KafkaConfigBean conf) {
     this.conf = conf;
@@ -71,6 +83,39 @@ public abstract class BaseKafkaSource extends BaseSource implements OffsetCommit
               KafkaErrors.KAFKA_05
           )
       );
+    }
+    LOG.debug("ou.id " + getContext().getConfig(confOuId));
+    LOG.debug("broker " + getContext().getConfig(confKafkaBrokerAddress));
+    LOG.debug("zk " + getContext().getConfig(confKafkaZKAddress));
+    LOG.debug("stage.name " + getContext().getStageInfo().getName());
+    boolean isKafkaConsumerByUser = kafkaConsumerByUser.equals(getContext().getStageInfo().getName());
+    if(isKafkaConsumerByUser) {
+      String ouId = getContext().getConfig(confOuId);
+      if(ouId == null || ouId.isEmpty()) {
+        issues.add(
+                getContext().createConfigIssue(
+                        KafkaOriginGroups.KAFKA.name(),
+                        KAFKA_CONFIG_BEAN_PREFIX + "topic",
+                        KafkaErrors.KAFKA_05
+                )
+        );
+      }
+      try {
+        TOPIC.valueOf(conf.topic);
+      } catch (IllegalArgumentException e){
+        issues.add(
+                getContext().createConfigIssue(
+                        KafkaOriginGroups.KAFKA.name(),
+                        KAFKA_CONFIG_BEAN_PREFIX + "topic",
+                        KafkaErrors.KAFKA_04
+                )
+        );
+      }
+
+      conf.topic = conf.topic + "_" + ouId;
+      conf.metadataBrokerList = getContext().getConfig(confKafkaBrokerAddress);
+      conf.zookeeperConnect = getContext().getConfig(confKafkaZKAddress);
+
     }
     //maxWaitTime
     if (conf.maxWaitTime < 1) {

@@ -35,6 +35,9 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.io.IOUtils;
 
+import java.io.*;
+import java.util.*;
+
 public abstract class SdcKafkaTestUtil {
 
   private static final String MIME = "text/plain";
