@@ -30,8 +30,8 @@ import com.streamsets.pipeline.lib.udp.UDPConsumer;
 import com.streamsets.pipeline.lib.udp.UDPMessage;
 import com.streamsets.pipeline.lib.udp.UDPMessageSerializer;
 import com.streamsets.pipeline.stage.destination.kafka.KafkaTargetConfig;
-import com.streamsets.pipeline.stage.origin.lib.UDPDataFormat;
 import com.streamsets.pipeline.stage.origin.tokafka.SdcKafkaProducerPooledObjectFactory;
+import com.streamsets.pipeline.stage.origin.lib.UDPDataFormat;
 import io.netty.channel.socket.DatagramPacket;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
@@ -39,6 +39,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class KafkaUDPConsumer implements UDPConsumer {
   private static final Logger LOG = LoggerFactory.getLogger(KafkaUDPConsumer.class);

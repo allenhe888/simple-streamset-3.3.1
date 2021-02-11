@@ -37,6 +37,12 @@ import scala.Option;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class KafkaTestUtil1_0 extends SdcKafkaTestUtil {

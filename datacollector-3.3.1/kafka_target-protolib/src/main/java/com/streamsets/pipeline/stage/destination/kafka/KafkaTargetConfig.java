@@ -17,12 +17,24 @@ package com.streamsets.pipeline.stage.destination.kafka;
 
 import com.google.common.base.Joiner;
 import com.google.common.net.HostAndPort;
+import com.streamsets.pipeline.api.ConfigDef;
+import com.streamsets.pipeline.api.ConfigDefBean;
+import com.streamsets.pipeline.api.Record;
+import com.streamsets.pipeline.api.Stage;
 import com.streamsets.pipeline.api.StageException;
+import com.streamsets.pipeline.api.ValueChooserModel;
 import com.streamsets.pipeline.api.el.ELEval;
 import com.streamsets.pipeline.api.el.ELEvalException;
 import com.streamsets.pipeline.api.el.ELVars;
 import com.streamsets.pipeline.config.DataFormat;
-import com.streamsets.pipeline.kafka.api.*;
+import com.streamsets.pipeline.kafka.api.KafkaDestinationGroups;
+import com.streamsets.pipeline.kafka.api.KafkaOriginGroups;
+import com.streamsets.pipeline.kafka.api.PartitionStrategy;
+import com.streamsets.pipeline.kafka.api.ProducerFactorySettings;
+import com.streamsets.pipeline.kafka.api.SdcKafkaProducer;
+import com.streamsets.pipeline.kafka.api.SdcKafkaProducerFactory;
+import com.streamsets.pipeline.kafka.api.SdcKafkaValidationUtil;
+import com.streamsets.pipeline.kafka.api.SdcKafkaValidationUtilFactory;
 import com.streamsets.pipeline.lib.el.ELUtils;
 import com.streamsets.pipeline.lib.el.RecordEL;
 import com.streamsets.pipeline.lib.kafka.KafkaConstants;
@@ -30,6 +42,13 @@ import com.streamsets.pipeline.lib.kafka.KafkaErrors;
 import com.streamsets.pipeline.stage.destination.lib.DataGeneratorFormatConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static com.streamsets.pipeline.config.AvroSchemaLookupMode.ID;
 import static com.streamsets.pipeline.config.AvroSchemaLookupMode.SUBJECT;
@@ -229,11 +248,47 @@ public class KafkaTargetConfig {
   // holds the value of 'retry.backoff.ms' supplied by the user or the default value
   private long retryBackoffMs;
 
+  private static String kafkaProducerByUser = "com_streamsets_pipeline_stage_destination_kafka_cluster_KafkaDTargetUser";
+  private static String confOuId = "env.ou.id";
+  private static String confKafkaBrokerAddress = "env.kafka.broker.address";
+
   public void init(Stage.Context context, List<Stage.ConfigIssue> issues) {
     init(context, this.dataFormat, issues);
   }
 
   public void init(Stage.Context context, DataFormat dataFormat, List<Stage.ConfigIssue> issues) {
+    LOG.debug("ou.id " + context.getConfig(confOuId));
+    LOG.debug("broker " + context.getConfig(confKafkaBrokerAddress));
+    LOG.debug("stage.name " + context.getStageInfo().getName());
+
+    boolean isKafkaProducerByUser = kafkaProducerByUser.equals(context.getStageInfo().getName());
+    if(isKafkaProducerByUser) {
+      String ouId = context.getConfig(confOuId);
+      if(ouId == null || ouId.isEmpty()) {
+        issues.add(
+                context.createConfigIssue(
+                        KafkaOriginGroups.KAFKA.name(),
+                        KAFKA_CONFIG_BEAN_PREFIX + "topic",
+                        KafkaErrors.KAFKA_05
+                )
+        );
+      }
+      try {
+        TOPIC.valueOf(topic);
+      } catch (IllegalArgumentException e){
+        issues.add(
+                context.createConfigIssue(
+                        KafkaOriginGroups.KAFKA.name(),
+                        KAFKA_CONFIG_BEAN_PREFIX + "topic",
+                        KafkaErrors.KAFKA_04
+                )
+        );
+      }
+
+      topic = topic + "_" + ouId;
+      metadataBrokerList = context.getConfig(confKafkaBrokerAddress);
+    }
+
     dataGeneratorFormatConfig.init(
         context,
         dataFormat,

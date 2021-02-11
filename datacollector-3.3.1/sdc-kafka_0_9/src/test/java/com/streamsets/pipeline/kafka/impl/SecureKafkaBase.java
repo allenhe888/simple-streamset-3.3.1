@@ -21,7 +21,14 @@ import com.streamsets.pipeline.api.Source;
 import com.streamsets.pipeline.api.Stage;
 import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.config.DataFormat;
-import com.streamsets.pipeline.kafka.api.*;
+import com.streamsets.pipeline.kafka.api.ConsumerFactorySettings;
+import com.streamsets.pipeline.kafka.api.MessageAndOffset;
+import com.streamsets.pipeline.kafka.api.PartitionStrategy;
+import com.streamsets.pipeline.kafka.api.ProducerFactorySettings;
+import com.streamsets.pipeline.kafka.api.SdcKafkaConsumer;
+import com.streamsets.pipeline.kafka.api.SdcKafkaConsumerFactory;
+import com.streamsets.pipeline.kafka.api.SdcKafkaProducer;
+import com.streamsets.pipeline.kafka.api.SdcKafkaProducerFactory;
 import com.streamsets.pipeline.lib.kafka.KafkaConstants;
 import com.streamsets.pipeline.sdk.ContextInfoCreator;
 import com.streamsets.testing.SingleForkNoReuseTest;
@@ -41,6 +48,11 @@ import org.junit.experimental.categories.Category;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 @Category(SingleForkNoReuseTest.class)
 public abstract class SecureKafkaBase {

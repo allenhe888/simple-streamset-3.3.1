@@ -49,18 +49,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.sql.Blob;
-import java.sql.Clob;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.sql.Types;
+import java.sql.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -691,7 +680,21 @@ public class JdbcUtil {
     Collections.list(DriverManager.getDrivers()).forEach(driver -> {
       LOG.info("Driver class {} (version {}.{})", driver.getClass().getName(), driver.getMajorVersion(), driver.getMinorVersion());
     });
-
+    String jdbcUrl = hikariConfigBean.connectionString;
+    try {
+     DriverManager.getDriver(jdbcUrl);
+    }catch (Exception e){
+      //when no existing suitable driver,try loading driver using current classloader
+      LOG.info("no existing suitable driver in DriverManager,try loading driver using current classloader!");
+      String driverClassName = getDriverClassName(jdbcUrl);
+      try {
+          Class driverClass = Class.forName(driverClassName);
+          Driver jdbcDriver = (Driver) driverClass.newInstance();
+          DriverManager.registerDriver(jdbcDriver);
+      }catch (Exception ex){
+        throw new RuntimeException("not found suitable Driver for jdbcUrl:  " + jdbcUrl, ex);
+      }
+    }
     config.setJdbcUrl(hikariConfigBean.connectionString);
     if (hikariConfigBean.useCredentials){
        config.setUsername(hikariConfigBean.username.get());
@@ -724,6 +727,26 @@ public class JdbcUtil {
     config.setDataSourceProperties(hikariConfigBean.getDriverProperties());
 
     return config;
+  }
+
+  private static String getDriverClassName(String jdbcUrl) {
+    String[] jdbcFields = jdbcUrl.split(":");
+    switch (jdbcFields[1]){
+      case "mysql":
+        return "com.mysql.jdbc.Driver";
+      case "postgresql":
+        return "org.postgresql.Driver";
+      case "oracle":
+        return "oracle.jdbc.driver.OracleDriver";
+      case "jtds":
+        return "net.sourceforge.jtds.jdbc.Driver";
+      case "sqlserver":
+        return "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+      case "odbc":
+        return "sun.jdbc.odbc.JdbcOdbcDriver";
+      default:
+          throw new RuntimeException("unsupported jdbc driver for jdbcUrl: " + jdbcUrl);
+    }
   }
 
   public static HikariDataSource createDataSourceForWrite(

@@ -23,6 +23,12 @@ import com.streamsets.pipeline.api.impl.Utils;
 import com.streamsets.pipeline.kafka.api.MessageAndOffset;
 import com.streamsets.pipeline.kafka.api.SdcKafkaConsumer;
 import org.apache.commons.lang.StringUtils;
+import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.OffsetAndMetadata;
+import org.apache.kafka.clients.consumer.CommitFailedException;
 import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.errors.AuthorizationException;
@@ -30,6 +36,14 @@ import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -39,7 +53,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class BaseKafkaConsumer09 implements SdcKafkaConsumer, ConsumerRebalanceListener {
 
   private static final int BLOCKING_QUEUE_SIZE = 10000;
-  private static final int CONSUMER_POLLING_WINDOW_MS = 100;
+  private static final int CONSUMER_POLLING_WINDOW_MS = 2000;
   private static final String REBALANCE_IN_PROGRESS = "Rebalance In Progress";
   private static final String WAITING_ON_POLL = "Waiting on poll";
 
