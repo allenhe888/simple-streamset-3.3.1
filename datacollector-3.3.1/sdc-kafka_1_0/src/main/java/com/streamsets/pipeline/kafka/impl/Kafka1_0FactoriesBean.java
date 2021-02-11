@@ -15,8 +15,6 @@
  */
 package com.streamsets.pipeline.kafka.impl;
 
-import com.streamsets.pipeline.kafka.api.*;
-
 public class Kafka1_0FactoriesBean extends FactoriesBean {
 
   @Override
